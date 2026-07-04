@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
@@ -20,9 +20,12 @@
     "@radix-ui/react-switch": "^1.3.2",
     "@radix-ui/react-tabs": "^1.1.16",
     "@radix-ui/react-tooltip": "^1.2.11",
+    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
+    "@types/three": "^0.185.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
     "lucide-react": "^1.23.0",
     "next": "16.2.10",
     "react": "19.2.4",
@@ -30,7 +33,8 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0",
     "three": "^0.185.1",
-    "zod": "^4.4.3"
+    "zod": "^4.4.3",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.2",

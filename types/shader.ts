@@ -46,8 +46,8 @@ export interface ShaderMetadata {
   createdAt: string
   updatedAt: string
   relatedShaders: string[]
-  fragmentShader: string
-  vertexShader: string
+  fragmentShader?: string
+  vertexShader?: string
 }
 
 export interface ShaderExport {

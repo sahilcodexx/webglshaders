@@ -15,33 +15,30 @@ interface ShaderPreviewProps {
 function ShaderPlane({
   fragmentShader,
   vertexShader,
-  uniforms,
+  uniforms: externalUniforms,
 }: Omit<ShaderPreviewProps, "className">) {
   const meshRef = useRef<THREE.Mesh>(null)
-  const timeRef = useRef({ value: 0 })
+  const timeUniform = useMemo(() => ({ value: 0 }), [])
 
   const material = useMemo(() => {
-    const mergedUniforms = {
-      uTime: timeRef.current,
-      ...uniforms,
+    const mergedUniforms: Record<string, THREE.IUniform> = {
+      uTime: timeUniform,
+    }
+    for (const [key, val] of Object.entries(externalUniforms)) {
+      mergedUniforms[key] = { value: val.value }
     }
     return new THREE.ShaderMaterial({
       fragmentShader,
       vertexShader,
-      uniforms: Object.fromEntries(
-        Object.entries(mergedUniforms).map(([key, val]) => [key, { value: val.value }])
-      ),
+      uniforms: mergedUniforms,
       transparent: true,
       side: THREE.DoubleSide,
     })
-  }, [fragmentShader, vertexShader, uniforms])
+  }, [fragmentShader, vertexShader, externalUniforms, timeUniform])
 
   useFrame((_, delta) => {
-    timeRef.current.value += delta
-    if (material.uniforms.uTime) {
-      material.uniforms.uTime.value = timeRef.current.value
-    }
-    for (const [key, uniform] of Object.entries(uniforms)) {
+    timeUniform.value += delta
+    for (const [key, uniform] of Object.entries(externalUniforms)) {
       if (material.uniforms[key]) {
         material.uniforms[key].value = uniform.value
       }

@@ -26,22 +26,27 @@ function MiniPreview({
   vertexShader: string
 }) {
   const meshRef = useRef<THREE.Mesh>(null)
-  const timeRef = useRef({ value: 0 })
+  const uniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+    }),
+    []
+  )
 
   const material = useMemo(
     () =>
       new THREE.ShaderMaterial({
         fragmentShader,
         vertexShader,
-        uniforms: { uTime: timeRef },
+        uniforms,
         transparent: true,
         side: THREE.DoubleSide,
       }),
-    [fragmentShader, vertexShader]
+    [fragmentShader, vertexShader, uniforms]
   )
 
   useFrame((_, delta) => {
-    timeRef.current.value += delta
+    uniforms.uTime.value += delta
   })
 
   useEffect(() => {
