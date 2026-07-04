@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Toaster } from "sonner"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -14,9 +13,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "shadercn — The shadcn/ui of shaders",
-  description:
-    "Browse, customize, and copy production-ready GLSL shaders. Open-source shader component library for developers.",
+  title: "shadercn",
+  description: "The shadcn/ui of shaders.",
 }
 
 export default function RootLayout({
@@ -32,7 +30,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
-        <Toaster position="bottom-right" />
       </body>
     </html>
   )
