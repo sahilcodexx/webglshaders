@@ -6,6 +6,7 @@ import { ShaderCard } from "@/components/shaders/ShaderCard"
 import { useShaderStore } from "@/lib/shaderStore"
 import { cn } from "@/utils/cn"
 import Link from "next/link"
+import LineWaves from "@/components/LineWaves"
 
 const categories = [
   { value: "atmosphere", label: "Atmosphere" },
@@ -61,9 +62,49 @@ export default function GalleryPage() {
         </div>
       </header>
 
-      <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-12">
+      <section className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+        <LineWaves
+          speed={0.3}
+          innerLineCount={32}
+          outerLineCount={48}
+          warpIntensity={1.2}
+          rotation={-30}
+          colorCycleSpeed={0.8}
+          brightness={0.15}
+          color1="#7C3AED"
+          color2="#3B82F6"
+          color3="#EC4899"
+          enableMouseInteraction={true}
+          mouseInfluence={3.0}
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 backdrop-blur-[1px]">
+          <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            shadercn
+          </h1>
+          <p className="mt-4 max-w-lg text-center text-lg text-white/70">
+            The shadcn/ui of shaders. Browse, customize, and copy
+            production-ready GLSL shaders.
+          </p>
+          <div className="mt-8 flex gap-3">
+            <a
+              href="#gallery"
+              className="rounded-xl bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-white/90"
+            >
+              Browse Shaders
+            </a>
+            <a
+              href="/playground"
+              className="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/20"
+            >
+              Playground
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <main id="gallery" className="flex-1 mx-auto w-full max-w-6xl px-6 py-12">
         <div className="mb-10">
-          <h1 className="text-4xl font-bold tracking-tight">Shaders</h1>
+          <h2 className="text-3xl font-bold tracking-tight">Shaders</h2>
           <p className="mt-2 text-zinc-500 dark:text-zinc-400">
             Browse, customize, and copy production-ready GLSL shaders.
           </p>
