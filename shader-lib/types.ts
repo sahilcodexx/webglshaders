@@ -35,4 +35,3 @@ export interface ShaderMetadata {
   examples: string[]
   performanceNotes: string[]
 }
-

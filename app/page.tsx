@@ -5,19 +5,9 @@ import Link from "next/link"
 import { useState, type ReactNode } from "react"
 
 import {
-  AuroraShader,
-  BeamsShader,
-  DarkVeilShader,
-  DitherFieldShader,
-  FerrofluidShader,
-  GradientBlindsShader,
-  KaleidoTunnelShader,
-  LiquidChromeShader,
-  NeonVeilShader,
-  PlasmaBlobShader,
-  RaymarchGlassShader,
-  VolumetricNebulaShader,
-  WarpGridShader,
+  CosmicShader,
+  GlassShader,
+  GradientShader,
 } from "@/components/shaders"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { shaders } from "@/shader-lib"
@@ -118,110 +108,45 @@ export default function Home() {
     {
       metadata: shaders[0],
       preview: () => (
-        <FerrofluidShader
-          scale={1.6}
-          turbulence={1}
-          fluidity={0.1}
-          rimWidth={0.2}
-          sharpness={2.5}
-          shimmer={1.5}
-          glow={2}
+        <GradientShader
+          color1="#5227ff"
+          color2="#dbba95"
+          color3="#d0bce1"
+          speed={0.4}
+          noiseDensity={5.5}
+          noiseStrength={4.0}
         />
       ),
       usage:
-        '<FerrofluidShader scale={1.6} turbulence={1} rimWidth={0.2} glow={2} color1="#ffffff" />',
+        '<GradientShader color1="#5227ff" color2="#dbba95" color3="#d0bce1" speed={0.4} />',
     },
     {
       metadata: shaders[1],
       preview: () => (
-        <AuroraShader
-          speed={1}
-          blend={0.5}
-          colorA="#7cff67"
-          colorB="#b497cf"
-          colorC="#5227ff"
+        <CosmicShader
+          color1="#5227ff"
+          color2="#dbba95"
+          color3="#d0bce1"
+          speed={0.4}
+          holographicIntensity={1.0}
         />
       ),
       usage:
-        '<AuroraShader speed={1} blend={0.5} colorA="#7cff67" colorB="#b497cf" colorC="#5227ff" />',
+        '<CosmicShader color1="#5227ff" color2="#dbba95" color3="#d0bce1" holographicIntensity={1.0} />',
     },
     {
       metadata: shaders[2],
       preview: () => (
-        <BeamsShader
-          beamCount={20}
-          beamWidth={0.32}
-          beamHeight={30}
-          noiseIntensity={1.75}
-          rotation={30}
+        <GlassShader
+          color1="#67E8F9"
+          color2="#F0ABFC"
+          color3="#FCD34D"
+          transparency={0.3}
+          refraction={1.5}
         />
       ),
       usage:
-        '<BeamsShader beamCount={20} beamWidth={0.32} beamHeight={30} noiseIntensity={1.75} rotation={30} />',
-    },
-    {
-      metadata: shaders[3],
-      preview: () => <DarkVeilShader speed={0.5} color="#5227ff" />,
-      usage: '<DarkVeilShader speed={0.5} color="#5227ff" warpAmount={0} />',
-    },
-    {
-      metadata: shaders[4],
-      preview: () => <DitherFieldShader scale={8} dotSize={0.42} colorA="#808080" colorB="#ffffff" />,
-      usage: '<DitherFieldShader scale={8} dotSize={0.42} colorA="#808080" colorB="#ffffff" />',
-    },
-    {
-      metadata: shaders[5],
-      preview: () => (
-        <GradientBlindsShader
-          angle={20}
-          noiseAmount={0.5}
-          blindsCount={16}
-          minBlindWidth={0.6}
-          spotRadius={0.5}
-        />
-      ),
-      usage:
-        '<GradientBlindsShader angle={20} blindsCount={16} color1="#ff9ffc" color2="#5227ff" />',
-    },
-    {
-      metadata: shaders[6],
-      preview: () => <RaymarchGlassShader lightStrength={1.25} />,
-      usage:
-        '<RaymarchGlassShader speed={0.75} scale={1} baseColor="#67E8F9" accentColor="#F0ABFC" />',
-    },
-    {
-      metadata: shaders[7],
-      preview: () => <VolumetricNebulaShader density={1.2} falloff={0.42} />,
-      usage:
-        '<VolumetricNebulaShader density={1.2} falloff={0.42} color1="#38BDF8" color2="#A78BFA" color3="#FB7185" />',
-    },
-    {
-      metadata: shaders[8],
-      preview: () => <KaleidoTunnelShader segments={8} twist={1} glow={1.15} />,
-      usage: '<KaleidoTunnelShader segments={8} twist={1} glow={1.15} />',
-    },
-    {
-      metadata: shaders[9],
-      preview: () => <LiquidChromeShader distortion={1.15} roughness={0.4} />,
-      usage:
-        '<LiquidChromeShader distortion={1.15} roughness={0.4} baseColor="#B8FFF1" highlightColor="#FF6B4A" />',
-    },
-    {
-      metadata: shaders[10],
-      preview: () => <NeonVeilShader density={8.5} intensity={1.12} />,
-      usage:
-        '<NeonVeilShader speed={0.45} density={8.5} intensity={1.12} color1="#00F5D4" color2="#7C3AED" color3="#F15BB5" />',
-    },
-    {
-      metadata: shaders[11],
-      preview: () => <WarpGridShader gridScale={13} warp={1.2} glow={0.9} />,
-      usage: '<WarpGridShader gridScale={13} warp={1.2} glow={0.9} color1="#67E8F9" color2="#FB7185" />',
-    },
-    {
-      metadata: shaders[12],
-      preview: () => <PlasmaBlobShader blobCount={8} blobSize={0.26} softness={1.2} />,
-      usage:
-        '<PlasmaBlobShader blobCount={8} blobSize={0.26} softness={1.2} color1="#2DD4BF" color2="#F97316" color3="#E879F9" />',
+        '<GlassShader color1="#67E8F9" color2="#F0ABFC" color3="#FCD34D" transparency={0.3} />',
     },
   ]
 
@@ -286,7 +211,7 @@ export default function Home() {
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
                 <a
-                  href="https://www.reactbits.dev/"
+                  href="https://github.com/ruucm/shadergradient"
                   target="_blank"
                   rel="noreferrer"
                   className={cn(
@@ -294,7 +219,7 @@ export default function Home() {
                     "border-white/15 bg-white/5 text-white hover:bg-white/10"
                   )}
                 >
-                  Inspiration source
+                  Inspired by shadergradient
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>

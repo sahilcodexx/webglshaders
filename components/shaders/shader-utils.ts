@@ -1,24 +1,23 @@
-export type Vec2 = [number, number]
-export type Vec3 = [number, number, number]
+export type UniformValue =
+  | number
+  | boolean
+  | Float32Array
+  | [number, number]
+  | [number, number, number]
+  | [number, number, number, number]
 
-export function hexToRgb(hex: string): Vec3 {
-  const normalized = hex.replace("#", "")
-  const value =
-    normalized.length === 3
-      ? normalized
-          .split("")
-          .map((char) => char + char)
-          .join("")
-      : normalized
+export type ShaderUniforms = Record<string, { value: UniformValue }>
 
+export function hexToRgb(hex: string): [number, number, number] {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  if (!result) return [0, 0, 0]
   return [
-    parseInt(value.slice(0, 2), 16) / 255,
-    parseInt(value.slice(2, 4), 16) / 255,
-    parseInt(value.slice(4, 6), 16) / 255,
+    parseInt(result[1], 16) / 255,
+    parseInt(result[2], 16) / 255,
+    parseInt(result[3], 16) / 255,
   ]
 }
 
-export function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max)
+export function parseColor(hex: string): [number, number, number] {
+  return hexToRgb(hex)
 }
-
