@@ -1,0 +1,72 @@
+import type { ShaderMetadata } from "@/shader-lib/types"
+
+export const warpGridMetadata = {
+  name: "Warp Grid",
+  slug: "warp-grid",
+  description:
+    "A glowing perspective grid with pointer warping for technical dashboards and sci-fi panels.",
+  tags: ["grid", "glow", "perspective", "cursor", "technical"],
+  difficulty: "beginner",
+  author: "shadercn",
+  license: "MIT",
+  version: "0.1.0",
+  component: "WarpGridShader",
+  uniforms: [
+    {
+      name: "speed",
+      label: "Speed",
+      type: "slider",
+      defaultValue: 0.75,
+      min: 0,
+      max: 3,
+      step: 0.05,
+      description: "Animation speed multiplier.",
+    },
+    {
+      name: "gridScale",
+      label: "Grid Scale",
+      type: "slider",
+      defaultValue: 12,
+      min: 4,
+      max: 32,
+      step: 1,
+      description: "Grid cell density.",
+    },
+    {
+      name: "warp",
+      label: "Warp",
+      type: "slider",
+      defaultValue: 1,
+      min: 0,
+      max: 3,
+      step: 0.05,
+      description: "Amount of radial and cursor distortion.",
+    },
+    {
+      name: "lineWidth",
+      label: "Line Width",
+      type: "slider",
+      defaultValue: 1,
+      min: 0.25,
+      max: 3,
+      step: 0.05,
+      description: "Grid line thickness.",
+    },
+    {
+      name: "glow",
+      label: "Glow",
+      type: "slider",
+      defaultValue: 0.75,
+      min: 0,
+      max: 2,
+      step: 0.05,
+      description: "Bloom-like line intensity.",
+    },
+  ],
+  examples: ['<WarpGridShader gridScale={12} warp={1} glow={0.75} />'],
+  performanceNotes: [
+    "No texture lookups and no dynamic allocation per frame.",
+    "Uses derivative anti-aliasing through fwidth.",
+  ],
+} satisfies ShaderMetadata
+
